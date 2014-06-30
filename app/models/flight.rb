@@ -10,9 +10,6 @@ class Flight < ActiveRecord::Base
 		Flight.where("start_time > :future", {future: Time.now.utc.tomorrow.midnight}).
 		       select(:start_time).order(start_time: :asc).
 		       map{|f| f.start_time.utc.strftime('%d/%m/%Y')}.uniq
-
-		# Flight.select(:start_time).order(start_time: :asc)
-		#                .map{|f| f.start_time.utc.strftime('%d/%m/%Y')}.uniq
 	end
 
 	def self.search_flights(from_id, to_id, flight_date)

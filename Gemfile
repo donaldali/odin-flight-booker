@@ -28,6 +28,7 @@ group :test do
   gem 'capybara', '2.2.1'
   gem 'factory_girl_rails', '4.2.0'
   gem 'libnotify', '0.8.0'
+  gem 'shoulda-matchers', '2.6.1'
 end
 
 group :development do

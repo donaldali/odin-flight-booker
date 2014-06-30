@@ -3,8 +3,7 @@ describe "Flight pages" do
 
 	describe "index" do
 		before do 
-			# from_airport = create(:from_airport)
-			from_airport = create(:airport_with_flights, flight_count: 2)
+			from_airport = create(:airport_with_flights)
 			to_airport   = create(:to_airport)
 			visit flights_path
 		end
@@ -19,11 +18,6 @@ describe "Flight pages" do
 
 		describe "after flight search" do
 			before do
-				# from_airport = create(:airport_with_flights)
-				# puts Airport.count
-				# puts Flight.count
-				# Flight.all.each {|f| puts f.start_time.strftime('%d/%m/%Y')}
-				# puts "********************************"
 				fill_search_form
 				click_on('Search Flights')
 			end
@@ -45,6 +39,7 @@ describe "Flight pages" do
 				select('SFO', from: 'To', match: :first)
 				click_on('Search Flights')
 			end
+
 			it "displays error message" do
 				expect(page).to have_css(".alert.alert-warning")
 			end
