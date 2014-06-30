@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Odin Flight Booker
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    - if flash.any?
+      - flash.each do |type, message|
+        .alert.alert-dismissible{class: "alert-#{type}"}
+          = message
+          %button.close{type: "button", "data-dismiss" => "alert", "aria-hidden" => "true"} &times;
+    = yield
+    = debug(params) if Rails.env.development?

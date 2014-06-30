@@ -1,0 +1,27 @@
+%h1.text-center Search For Flights!
+
+.container
+  .row
+  = form_tag('/flights', method: 'get', role: 'form') do
+    .col-md-2.col-sm-6
+      .form-group
+        = label_tag(:from_airport_id, 'From: ')
+        = select_tag(:from_airport_id, options_for_select(@airport_options, @from_selected), class: 'form-control')
+    .col-md-2.col-sm-6
+      .form-group
+        = label_tag(:to_airport_id, 'To: ')
+        = select_tag(:to_airport_id, options_for_select(@airport_options, @to_selected), class: 'form-control')
+    .col-md-2.col-sm-6
+      .form-group
+        = label_tag(:passengers)
+        = select_tag(:passengers, options_for_select(@passenger_options, @passenger_selected), class: 'form-control')
+    .col-md-3.col-sm-6
+      .form-group
+        = label_tag(:flight_date)
+        = select_tag(:flight_date, options_for_select(@dates, @date_selected), class: 'form-control')
+    .col-md-3
+      = submit_tag('Search Flights', class: 'btn btn-info', id: 'search_flights')
+
+- unless @matched_flights.blank?
+  = render partial: 'matching_flights', locals: {flights: @matched_flights}
+

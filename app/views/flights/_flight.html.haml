@@ -1,0 +1,3 @@
+.checkbox
+  = radio_button_tag(:flight_id, flight.id, true)
+  = label_tag("flight_id_#{flight.id}", flight_label(flight))
