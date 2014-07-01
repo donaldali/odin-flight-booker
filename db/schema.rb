@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629063742) do
+ActiveRecord::Schema.define(version: 20140630214910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20140629063742) do
 
   add_index "airports", ["code"], name: "index_airports_on_code", using: :btree
 
+  create_table "bookings", force: true do |t|
+    t.string   "ref_number"
+    t.integer  "flight_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookings", ["ref_number"], name: "index_bookings_on_ref_number", using: :btree
+
   create_table "flights", force: true do |t|
     t.string   "flight_number"
     t.datetime "start_time"
@@ -34,5 +43,24 @@ ActiveRecord::Schema.define(version: 20140629063742) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "passenger_bookings", force: true do |t|
+    t.integer  "booking_id"
+    t.integer  "passenger_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "passenger_bookings", ["booking_id"], name: "index_passenger_bookings_on_booking_id", using: :btree
+  add_index "passenger_bookings", ["passenger_id"], name: "index_passenger_bookings_on_passenger_id", using: :btree
+
+  create_table "passengers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "passengers", ["email"], name: "index_passengers_on_email", using: :btree
 
 end
