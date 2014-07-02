@@ -13,7 +13,7 @@ class FlightsController < ApplicationController
 
 		unless params[:from_airport_id].nil?
 			if params[:from_airport_id] == params[:to_airport_id]
-				flash.now[:warning] = "Select different 'From' and 'To' airports"
+				flash.now[:error] = "Select different 'From' and 'To' airports"
 			else
 				@matched_flights = Flight.search_flights(params[:from_airport_id],
 			                                           params[:to_airport_id],

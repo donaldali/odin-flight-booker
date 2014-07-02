@@ -1,3 +1,17 @@
-.checkbox
-  = radio_button_tag(:flight_id, flight.id, true)
-  = label_tag("flight_id_#{flight.id}", flight_label(flight))
+.table-responsive
+  %table.table
+    %tbody
+      %tr
+        %td.col-md-4
+          Flight:
+          %strong= "#{flight_name(flight.id)}"
+        %td.col-md-8
+          Departs At:
+          %strong= "#{flight_datetime(flight.id)}"
+      %tr
+        %td.col-md-4
+          From:
+          %strong= "#{from_location(flight.id)}"
+        %td.col-md-8
+          To:
+          %strong= "#{to_location(flight.id)}"

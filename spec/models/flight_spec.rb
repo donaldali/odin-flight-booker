@@ -21,4 +21,20 @@ describe Flight do
 		it { should belong_to(:from_airport) }
 		it { should belong_to(:to_airport) }
 	end
+
+	describe ".all_unique_future_flight_dates" do
+		let!(:future_flight) { create(:flight) }
+
+		it "selects only future flights" do
+			past_flight = create(:flight, start_time: 1.day.ago)
+			expect(Flight.count).to eq(2)
+			expect(Flight.all_unique_future_flight_dates.count).to eq(1)
+		end
+
+		it "selects only unique flight dates" do
+			same_day_flight = create(:flight)
+			expect(Flight.count).to eq(2)
+			expect(Flight.all_unique_future_flight_dates.count).to eq(1)
+		end
+	end
 end

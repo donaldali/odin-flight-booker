@@ -1,0 +1,26 @@
+.page-header
+  %h1 Booking Information
+%h4
+  Booking Reference Number: 
+  %strong= "#{@booking.ref_number}"
+%br
+.panel.panel-default
+  .panel-heading
+    %h4= "Flight Information"
+  = render @booking.flight
+%br
+.panel.panel-default
+  .panel-heading
+    %h4= "Information for #{pluralize(@booking.passengers.count, 'Passenger')}"
+
+  .table-responsive
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+          %th Email
+      %tbody
+        = render @booking.passengers
+.text-center
+  = link_to "Book Another Flight", flights_path, class: "btn btn-info btn-lg"
+

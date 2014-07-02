@@ -11,3 +11,10 @@ end
 def next_day
 	Time.now.utc.tomorrow.strftime('%d/%m/%Y')
 end
+
+def fill_passenger_form num
+	num.times do |i|
+		fill_in "booking_passengers_attributes_#{i}_name",  with: "John#{i}"
+		fill_in "booking_passengers_attributes_#{i}_email", with: "John#{i}@doe.com"
+	end
+end

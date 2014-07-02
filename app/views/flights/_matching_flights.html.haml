@@ -1,7 +1,7 @@
 .flight-list
   %h3= choose_flight_header(params[:from_airport_id], params[:to_airport_id], params[:flight_date])
 
-  = form_tag('/flights', method: 'get', role: 'form') do
-    = render flights
+  = form_tag(new_booking_path, method: 'get', role: 'form') do
+    = render partial: 'flight_option', collection: flights, as: :flight
     = hidden_field_tag(:passengers, params[:passengers])
-    = submit_tag('Choose Flight', class: 'btn btn-info')
+    = submit_tag('Choose Flight', class: 'btn btn-info btn-lg', id: 'choose_flight')
