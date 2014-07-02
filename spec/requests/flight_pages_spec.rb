@@ -42,6 +42,17 @@ describe "Flight pages" do
 			end
 		end
 
+		describe "with no search results" do
+			before do
+				extra_airport = create(:airport, code: 'ATL')
+				fill_search_form
+				select('ATL', from: 'From')
+				click_on('Search Flights')
+			end
+
+			it { should have_selector("h3", text: "No Flights found") }
+		end
+
 		describe "invalid search" do
 			before do
 				fill_search_form

@@ -28,3 +28,6 @@
 - unless @matched_flights.blank?
   = render partial: 'matching_flights', locals: {flights: @matched_flights}
 
+- if @matched_flights.blank? && !params[:from_airport_id].blank?
+  %h3 No Flights found
+
