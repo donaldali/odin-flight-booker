@@ -4,4 +4,4 @@
   = form_tag(new_booking_path, method: 'get', role: 'form') do
     = render partial: 'flight_option', collection: flights, as: :flight
     = hidden_field_tag(:passengers, params[:passengers])
-    = submit_tag('Choose Flight', class: 'btn btn-info btn-lg', id: 'choose_flight')
+    = submit_tag('Choose Flight', class: 'btn btn-primary btn-lg', id: 'choose_flight')

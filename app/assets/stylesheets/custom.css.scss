@@ -1,5 +1,20 @@
 @import "bootstrap";
 
+html {
+	height: 100%;
+	background: url(background_image.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+
+body {
+	margin: 0 30px;
+	background: transparent;
+}
+
+.btn-lg {
+	width: 200px;
+}
+
 #search_flights {
 	margin-top: 17px;
 }
@@ -21,10 +36,6 @@
 	@extend .has-error;
 }
 
-body {
-	margin: 0 30px;
-}
-
 #passenger-errors {
 	@extend .text-warning;
 	@extend .well;
@@ -32,5 +43,5 @@ body {
 }
 
 legend {
-	color: #3366cc;
+	color: #3333cc;
 }

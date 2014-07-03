@@ -4,23 +4,19 @@
   Booking Reference Number: 
   %strong= "#{@booking.ref_number}"
 %br
-.panel.panel-default
-  .panel-heading
-    %h4= "Flight Information"
-  = render @booking.flight
+%h3= "Flight Information"
+= render @booking.flight
 %br
-.panel.panel-default
-  .panel-heading
-    %h4= "Information for #{pluralize(@booking.passengers.count, 'Passenger')}"
+%h3= "Information for #{pluralize(@booking.passengers.count, 'Passenger')}"
 
-  .table-responsive
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Name
-          %th Email
-      %tbody
-        = render @booking.passengers
+.table-responsive
+  %table.table
+    %thead
+      %tr
+        %th.col-md-3 Name
+        %th.col-md-9 Email
+    %tbody
+      = render @booking.passengers
 .text-center
-  = link_to "Book Another Flight", flights_path, class: "btn btn-info btn-lg"
+  = link_to "Book Another Flight", flights_path, class: "btn btn-primary btn-lg"
 

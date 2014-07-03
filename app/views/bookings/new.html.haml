@@ -8,7 +8,7 @@
     %ul
       - @booking.errors.full_messages.each do |message|
         %li= message
-- i = 1
+- passenger_count = 1
 .container
   
   = form_for @booking, html: {role:'form'} do |form|
@@ -16,16 +16,16 @@
     = form.fields_for :passengers do |passengers_form|
       .col-lg-3.col-md-4.col-sm-6
         %fieldset
-          %legend= "Passenger #{i}"
+          %legend= "Passenger #{passenger_count}"
           .form-group
             = passengers_form.label :name, class: 'control-label'
             = passengers_form.text_field :name, class: 'form-control'
           .form-group
             = passengers_form.label :email, class: 'control-label'
             = passengers_form.text_field :email, class: 'form-control'
-          - i += 1
+          - passenger_count += 1
 
     = hidden_field_tag(:passengers, params[:passengers])
     = hidden_field_tag(:flight_id,  params[:flight_id])
     .col-lg-12.col-md-12.col-sm-12.text-center
-      = form.submit "Book Flight", class: 'btn btn-info btn-lg'
+      = form.submit "Book Flight", class: 'btn btn-primary btn-lg'

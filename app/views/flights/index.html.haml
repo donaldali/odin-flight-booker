@@ -21,7 +21,7 @@
         = label_tag(:flight_date)
         = select_tag(:flight_date, options_for_select(@dates, @date_selected), class: 'form-control')
     .col-md-3.col-sm-6.text-center
-      %button.btn.btn-info.btn-lg#search_flights{name: 'commit', type: 'submit'}
+      %button.btn.btn-primary.btn-lg#search_flights{name: 'commit', type: 'submit'}
         %span.glyphicon.glyphicon-search
         Search Flights
 

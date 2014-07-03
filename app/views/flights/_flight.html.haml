@@ -2,16 +2,16 @@
   %table.table
     %tbody
       %tr
-        %td.col-md-4
+        %td.col-md-3
           Flight:
           %strong= "#{flight_name(flight.id)}"
-        %td.col-md-8
+        %td.col-md-9
           Departs At:
           %strong= "#{flight_datetime(flight.id)}"
       %tr
-        %td.col-md-4
+        %td.col-md-3
           From:
           %strong= "#{from_location(flight.id)}"
-        %td.col-md-8
+        %td.col-md-9
           To:
           %strong= "#{to_location(flight.id)}"
