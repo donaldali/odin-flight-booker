@@ -9,14 +9,15 @@
 %br
 %h3= "Information for #{pluralize(@booking.passengers.count, 'Passenger')}"
 
-.table-responsive
-  %table.table
-    %thead
-      %tr
-        %th.col-md-3 Name
-        %th.col-md-9 Email
-    %tbody
-      = render @booking.passengers
-.text-center
-  = link_to "Book Another Flight", flights_path, class: "btn btn-primary btn-lg"
+.col-md-6
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th.col-md-6 Name
+          %th.col-md-6 Email
+      %tbody
+        = render @booking.passengers
+  .text-center
+    = link_to "Book Another Flight", flights_path, class: "btn btn-primary btn-lg"
 

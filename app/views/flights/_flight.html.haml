@@ -1,17 +1,17 @@
 .table-responsive
   %table.table
-    %tbody
+    %tbody.col-md-6
       %tr
-        %td.col-md-3
+        %td.col-md-6
           Flight:
           %strong= "#{flight_name(flight.id)}"
-        %td.col-md-9
+        %td.col-md-6
           Departs At:
           %strong= "#{flight_datetime(flight.id)}"
       %tr
-        %td.col-md-3
+        %td.col-md-6
           From:
           %strong= "#{from_location(flight.id)}"
-        %td.col-md-9
+        %td.col-md-6
           To:
           %strong= "#{to_location(flight.id)}"
