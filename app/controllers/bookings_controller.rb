@@ -8,8 +8,11 @@ class BookingsController < ApplicationController
 
 	def create
 		@booking = Booking.new(booking_params)
+
 		if @booking.save
 			@booking.update_attribute(:flight_id, params[:flight_id])
+			send_thank_you_emails(@booking.passengers)
+			
 			flash[:success] = "Your flight was succesfully booked!"
 			redirect_to @booking
 		else
@@ -26,5 +29,11 @@ class BookingsController < ApplicationController
 
 	  def booking_params
 	  	params.require(:booking).permit(passengers_attributes: [:id, :name, :email])
+	  end
+
+	  def send_thank_you_emails(passengers)
+	  	passengers.each do |passenger|
+	  		PassengerMailer.thank_you_email(passenger).deliver
+	  	end
 	  end
 end

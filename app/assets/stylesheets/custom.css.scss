@@ -28,6 +28,10 @@ body {
 	margin-top: 50px;
 }
 
+.alert-success {
+	@extend .alert-info;
+}
+
 .alert-error {
 	@extend .alert-danger;
 }

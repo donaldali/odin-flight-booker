@@ -54,7 +54,7 @@ end
 
 def create_data
 	avg_daily_flights = 7
-	number_of_days    = 7
+	number_of_days    = 9
 	airports_limit    = 5
 
 	airports_to_create = airports_data[0..airports_limit - 1]

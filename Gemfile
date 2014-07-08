@@ -14,6 +14,7 @@ gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.1.0'
 gem 'turbolinks', '2.2.2'
 gem 'jbuilder', '2.1.1'
+gem 'figaro', '0.7.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.14.2'
@@ -34,6 +35,7 @@ end
 group :development do
 	gem 'better_errors', '1.1.0'
 	gem 'binding_of_caller', '0.7.2'
+  gem 'letter_opener', '1.2.0'
 end
 
 group :doc do

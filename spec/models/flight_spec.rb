@@ -10,11 +10,15 @@ describe Flight do
 	it { should respond_to(:duration) }
 	it { should respond_to(:from_airport) }
 	it { should respond_to(:to_airport) }
+	it { should respond_to(:bookings) }
+	it { should respond_to(:passengers) }
 
 	describe "validations" do
 		it { should validate_presence_of(:flight_number) }
 		it { should validate_presence_of(:start_time) }
 		it { should validate_presence_of(:duration) }
+		it { should have_many(:bookings).dependent(:destroy) }
+		it { should have_many(:passengers) }
 	end
 
 	describe "associations" do

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+  %body
+    %h3
+      = "#{@name}, thanks for your recent booking."
+
+    %p
+      Booking Reference Number: 
+      %strong= "#{@ref_number}."
+    %br
+    %p
+      = "You booked #{@flight_info}.  You can always "
+      = link_to "see your flight details.", @url
+    %br
+    %p Thanks for using Odin Flight Booker and have a great day!
+    %br
+    %p Best regards,
+    %p The Odin Flight Booker Team
