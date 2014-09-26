@@ -24,3 +24,7 @@ Only flights on days in the future may be booked. _(If no **Flight dates** are a
 ## Email
 
 Be aware that the app will send a thank you email to all passengers after a booking is made.
+
+---
+
+**_[View on Heroku](http://dna-flight-booker.herokuapp.com/ "Flight Booker")._**
