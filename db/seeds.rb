@@ -3,6 +3,18 @@
 Airport.delete_all
 Flight.delete_all
 
+def create_data
+	airports_limit    = 5  # Create flights between this number of airports
+	avg_daily_flights = 7  # Create about this many flights each day
+	days_in_future    = 85 # Earliest flight created is this days from now
+	number_of_days    = 9  # Create flights till this number of days from
+	                       # the day of the earliest flight created
+
+	airports_to_create = airports_data[0..airports_limit - 1]
+	create_airports(airports_to_create)
+	create_flights(number_of_days, avg_daily_flights, days_in_future)
+end
+
 def airports_data
 	[ ["ATL", "Atlanta, GA"],           ["ORD", "Chicago, IL"],
 	  ["JFK", "New York, NY"],          ["SFO", "San Francisco, CA"],
@@ -31,14 +43,14 @@ def random_start(days_from_now)
 	days_from_now.days.from_now.midnight + (60 * (rand(60 * 24)))
 end
 
-def create_flights(number_of_days, daily_flights)
+def create_flights(num_of_days, daily_flights, days_in_future)
 	airports = Airport.all
 
 	airports.each do |from_airport|
 		airports.each do |to_airport|
 			next if from_airport == to_airport
 			duration = random_duration
-			(1..number_of_days).each do |days_from_now|
+			(days_in_future...days_in_future + num_of_days).each do |days_from_now|
 				number_of_flights = daily_flights + (rand(7) - 3)
 				number_of_flights.times do 
 					Flight.create!({ flight_number:   random_flight,
@@ -50,16 +62,6 @@ def create_flights(number_of_days, daily_flights)
 	    end
 		end
 	end
-end
-
-def create_data
-	avg_daily_flights = 7
-	number_of_days    = 9
-	airports_limit    = 5
-
-	airports_to_create = airports_data[0..airports_limit - 1]
-	create_airports(airports_to_create)
-	create_flights(number_of_days, avg_daily_flights)
 end
 
 create_data
